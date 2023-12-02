@@ -1,8 +1,9 @@
 use anyhow::Result;
-use std::fs;
+use std::{fs, env};
 
 fn main() -> Result<()> {
-    let data = fs::read_to_string("input.txt")?;
+    let p = env::current_dir()?;
+    let data = fs::read_to_string(p.join("day1/input.txt"))?;
 
     let parsed1: Vec<_> = data
         .split("\n")
